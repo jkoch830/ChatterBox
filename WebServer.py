@@ -6,6 +6,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
 
+import io
+
 
 import SpeechParse
 import EmotionScanner
@@ -53,8 +55,7 @@ def enter_new_conversation():
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
         print(photo)
-        string = photo.encoding
-        b = bytes(string, "utf-8")
+        b = io.BytesIO(photo)
         return jsonify(b)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
