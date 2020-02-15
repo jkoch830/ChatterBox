@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import Speech
+import Alamofire
+import SwiftyJSON
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -22,6 +24,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     var filemanager = FileManager.default
     var audioRecorder = AVAudioRecorder()
     var imagePicker =  UIImagePickerController()
+    
+    var picture: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,10 +122,36 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            print("yay")
+            picture = image
+            imagePicker.dismiss(animated: true, completion: didFinishTakingPic)
         }
+    }
+    
+    func didFinishTakingPic() {
+        guard let image = picture else { return }
+        let imgData = image.jpegData(compressionQuality: 1)!
+        
+        let uploadURL = "https://chatterboxweb.herokuapp.com/"
+        
+        let parameters = ["user": "Edward"]
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                for (key, value) in parameters {
+                    multipartFormData.append(value.data(using: .utf8)!, withName: key)
+                }
+                multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
+
+                }, to: uploadURL) { (result) in
+                    switch result {
+                    case .success(let upload, _, _):
+                        upload.responseJSON { response in
+                            print(response.result.value)
+                        }
+                    case .failure(let encodingError):
+                        print(encodingError)
+                    }
+                }
     }
 
     @IBAction func pressedRecord(_ sender: Any) {
