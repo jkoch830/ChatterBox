@@ -15,23 +15,29 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let V1: LeftViewController = self.storyboard?.instantiateViewController(withIdentifier: "left") as! LeftViewController
-        self.addChild(V1)
-        self.scrollView.addSubview(V1.view)
-        V1.didMove(toParent: self)
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         
-        let V2: View2 = View2(nibName: "View2", bundle: nil)
-        self.addChild(V2)
-        self.scrollView.addSubview(V2.view)
-        V2.didMove(toParent: self)
+        let RVC: RecordViewController = self.storyboard?.instantiateViewController(withIdentifier: "record") as! RecordViewController
+        self.addChild(RVC)
+        self.scrollView.addSubview(RVC.view)
+        RVC.didMove(toParent: self)
         
-        var V2Frame: CGRect = V2.view.frame
-        V2Frame.origin.x = self.view.frame.width
-        V2.view.frame = V2Frame
+        let TVC: DataBaseTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "database") as! DataBaseTableViewController
+        self.addChild(TVC)
+        self.scrollView.addSubview(TVC.view)
+        TVC.didMove(toParent: self)
+        
+        var TVCFrame: CGRect = TVC.view.frame
+        TVCFrame.origin.x = self.view.frame.width
+        TVC.view.frame = TVCFrame
         
         self.scrollView.contentSize = CGSize(width: self.view.frame.width*2, height: self.view.frame.size.height)
         
         self.scrollView.pinEdges(to: self.view)
+        self.scrollView.showsHorizontalScrollIndicator = false
+        self.scrollView.showsVerticalScrollIndicator = false
         self.view = self.scrollView
     }
 

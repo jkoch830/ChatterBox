@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,10 @@
 		2B58301523F79A1400C375AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B58301323F79A1400C375AD /* Main.storyboard */; };
 		2B58301723F79A1900C375AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B58301623F79A1900C375AD /* Assets.xcassets */; };
 		2B58301A23F79A1900C375AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B58301823F79A1900C375AD /* LaunchScreen.storyboard */; };
-		2BD23CDD23F7AC4B000C4EFA /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD23CDC23F7AC4B000C4EFA /* LeftViewController.swift */; };
-		3AE29C1123F7A6F6009E7AFC /* View2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE29C0F23F7A6F6009E7AFC /* View2.swift */; };
-		3AE29C1223F7A6F6009E7AFC /* View2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE29C1023F7A6F6009E7AFC /* View2.xib */; };
+		2BD23CDD23F7AC4B000C4EFA /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD23CDC23F7AC4B000C4EFA /* RecordViewController.swift */; };
+		2BE2079A23F7D1AB0094EDD6 /* DataBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2079923F7D1AB0094EDD6 /* DataBaseTableViewController.swift */; };
+		2BE2079C23F7D2E80094EDD6 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2079B23F7D2E80094EDD6 /* DataBaseTableViewCell.swift */; };
+		5E0F5E15A304511773714BBC /* Pods_ChatterBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +28,12 @@
 		2B58301623F79A1900C375AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B58301923F79A1900C375AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B58301B23F79A1900C375AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2BD23CDC23F7AC4B000C4EFA /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
-		3AE29C0F23F7A6F6009E7AFC /* View2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View2.swift; sourceTree = "<group>"; };
-		3AE29C1023F7A6F6009E7AFC /* View2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View2.xib; sourceTree = "<group>"; };
+		2BD23CDC23F7AC4B000C4EFA /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		2BE2079923F7D1AB0094EDD6 /* DataBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataBaseTableViewController.swift; path = /Users/Edward/Documents/GitHub/ChatterBox/ChatterBox/ChatterBox/DataBaseTableViewController.swift; sourceTree = "<absolute>"; };
+		2BE2079B23F7D2E80094EDD6 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
+		6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatterBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7209D5B0051A72C3989CD1EF /* Pods-ChatterBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.debug.xcconfig"; path = "Target Support Files/Pods-ChatterBox/Pods-ChatterBox.debug.xcconfig"; sourceTree = "<group>"; };
+		D4E7C74EDD45630C7E01DB9E /* Pods-ChatterBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.release.xcconfig"; path = "Target Support Files/Pods-ChatterBox/Pods-ChatterBox.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E0F5E15A304511773714BBC /* Pods_ChatterBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +53,8 @@
 			children = (
 				2B58300C23F79A1400C375AD /* ChatterBox */,
 				2B58300B23F79A1400C375AD /* Products */,
+				2BC40F75F037BA5943739A1C /* Pods */,
+				54C9A808F240996C9DF98EAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,15 +72,32 @@
 				2B58300D23F79A1400C375AD /* AppDelegate.swift */,
 				2B58300F23F79A1400C375AD /* SceneDelegate.swift */,
 				2B58301123F79A1400C375AD /* ViewController.swift */,
-				2BD23CDC23F7AC4B000C4EFA /* LeftViewController.swift */,
-				3AE29C0F23F7A6F6009E7AFC /* View2.swift */,
+				2BD23CDC23F7AC4B000C4EFA /* RecordViewController.swift */,
+				2BE2079923F7D1AB0094EDD6 /* DataBaseTableViewController.swift */,
+				2BE2079B23F7D2E80094EDD6 /* DataBaseTableViewCell.swift */,
 				2B58301323F79A1400C375AD /* Main.storyboard */,
-				3AE29C1023F7A6F6009E7AFC /* View2.xib */,
-				2B58301623F79A1900C375AD /* Assets.xcassets */,
 				2B58301823F79A1900C375AD /* LaunchScreen.storyboard */,
+				2B58301623F79A1900C375AD /* Assets.xcassets */,
 				2B58301B23F79A1900C375AD /* Info.plist */,
 			);
 			path = ChatterBox;
+			sourceTree = "<group>";
+		};
+		2BC40F75F037BA5943739A1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7209D5B0051A72C3989CD1EF /* Pods-ChatterBox.debug.xcconfig */,
+				D4E7C74EDD45630C7E01DB9E /* Pods-ChatterBox.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		54C9A808F240996C9DF98EAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B58301E23F79A1900C375AD /* Build configuration list for PBXNativeTarget "ChatterBox" */;
 			buildPhases = (
+				028428501780180917045EFF /* [CP] Check Pods Manifest.lock */,
 				2B58300623F79A1400C375AD /* Sources */,
 				2B58300723F79A1400C375AD /* Frameworks */,
 				2B58300823F79A1400C375AD /* Resources */,
+				CA2C9146674540D501DF4BEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,22 +162,64 @@
 			files = (
 				2B58301A23F79A1900C375AD /* LaunchScreen.storyboard in Resources */,
 				2B58301723F79A1900C375AD /* Assets.xcassets in Resources */,
-				3AE29C1223F7A6F6009E7AFC /* View2.xib in Resources */,
 				2B58301523F79A1400C375AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		028428501780180917045EFF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChatterBox-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA2C9146674540D501DF4BEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatterBox/Pods-ChatterBox-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatterBox/Pods-ChatterBox-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChatterBox/Pods-ChatterBox-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2B58300623F79A1400C375AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE29C1123F7A6F6009E7AFC /* View2.swift in Sources */,
 				2B58301223F79A1400C375AD /* ViewController.swift in Sources */,
+				2BE2079A23F7D1AB0094EDD6 /* DataBaseTableViewController.swift in Sources */,
+				2BE2079C23F7D2E80094EDD6 /* DataBaseTableViewCell.swift in Sources */,
 				2B58300E23F79A1400C375AD /* AppDelegate.swift in Sources */,
-				2BD23CDD23F7AC4B000C4EFA /* LeftViewController.swift in Sources */,
+				2BD23CDD23F7AC4B000C4EFA /* RecordViewController.swift in Sources */,
 				2B58301023F79A1400C375AD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +362,7 @@
 		};
 		2B58301F23F79A1900C375AD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7209D5B0051A72C3989CD1EF /* Pods-ChatterBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,6 +381,7 @@
 		};
 		2B58302023F79A1900C375AD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4E7C74EDD45630C7E01DB9E /* Pods-ChatterBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

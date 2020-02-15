@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Speech
 
-class LeftViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet var soundBars: [UIView]!
     @IBOutlet weak var recordButton: UIButton!
@@ -60,7 +60,7 @@ class LeftViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder.delegate = self
             audioRecorder.prepareToRecord()
         } catch {
-            print("bad")
+            print("failed to make audioRecorder")
         }
     }
     
@@ -95,21 +95,16 @@ class LeftViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func transcribeAudio(url: URL) {
-        // create a new recognizer and point it at our audio
         let recognizer = SFSpeechRecognizer()
         let request = SFSpeechURLRecognitionRequest(url: url)
 
-        // start recognition!
         recognizer?.recognitionTask(with: request) { (result, error) in
-            // abort if we didn't get any transcription back
             guard let result = result else {
-                print("There was an error: \(error!)")
+                print("UH OH: \(error!)")
                 return
             }
 
-            // if we got the final transcription back, print it
             if result.isFinal {
-                // pull out the best transcription...
                 print(result.bestTranscription.formattedString)
             }
         }
