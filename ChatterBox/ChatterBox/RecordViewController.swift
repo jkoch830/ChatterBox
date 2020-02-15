@@ -132,19 +132,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     
     func didFinishTakingPic() {
         guard let image = picture else { return }
-        let imgData = image.jpegData(compressionQuality: 1)!
+        let imgData = image.jpegData(compressionQuality: 0.05)!
         
         let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
         
         let parameters = ["user": "Edward", "friend": "James", "conversation": self.speech]
+        let headers: HTTPHeaders = [
+            "Content-type": "multipart/form-data"
+        ]
         Alamofire.upload(
             multipartFormData: { multipartFormData in
+                print(imgData)
+                multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
                 for (key, value) in parameters {
                     multipartFormData.append(value.data(using: .utf8)!, withName: key)
                 }
-                multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
-                print(imgData)
-                }, to: uploadURL, method: .post) { (result) in
+        }, to: uploadURL, method: .post, headers: headers) { (result) in
                     switch result {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in
