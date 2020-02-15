@@ -74,7 +74,7 @@ def enter_new_conversation():
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
     storage = p_firebase.storage()
-    print(storage.child("example.jpg").get_url())
+    print(storage.child("example.jpg").get_url(""))
     data = {"failed": False}
     if request.method == 'POST':            # retrieve_data
         info = request.form
