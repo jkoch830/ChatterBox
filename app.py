@@ -1,6 +1,8 @@
 from flask import Flask, request, redirect, url_for, render_template, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os, io
+import SpeechParse
+import EmotionScanner
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URL"]
