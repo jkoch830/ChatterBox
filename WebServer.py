@@ -22,18 +22,10 @@ STORAGE_URL = "chatterbox-83fc3.appspot.com/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
-def upload_photo(photo):
-    # sto = firebase.storage()
-    # sto.child("images/apple.jpg").put("download.jpg")
-    temp = tempfile.NamedTemporaryFile(delete=False)
-    photo.save(temp.name)
-    firebase.storage().put(temp.name)
-    os.remove(temp.name)
 
 
 def post_data(user, friend, key_words, emotion, photo):
-    upload_photo(photo)
-    data = {'Key Words': key_words, 'Emotion': emotion}
+    data = {'Key Words': key_words, 'Emotion': emotion, 'Photo': photo}
     if not SearchDatabase.user_in_database(user):   # user not in database
         print("BEFORE POST")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
@@ -60,10 +52,9 @@ def enter_new_conversation():
         photo = request.files.get("profilePicture")
         print(photo)
         b = io.BytesIO(photo.read())
-        #return jsonify(b)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
-        post_data(user, friend, key_words, emotion, photo)   # posts data
+        post_data(user, friend, key_words, emotion, b)   # posts data
     data = {"success": True}
     return jsonify(data)
 
