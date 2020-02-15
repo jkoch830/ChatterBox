@@ -18,7 +18,7 @@
 		2BE207A223F80AFE0094EDD6 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE207A123F80AFE0094EDD6 /* DataBaseViewController.swift */; };
 		2BE207A423F8217A0094EDD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE207A323F8217A0094EDD6 /* ViewController.swift */; };
 		2BE207A823F878B00094EDD6 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE207A723F878B00094EDD6 /* Friends.swift */; };
-		5E0F5E15A304511773714BBC /* Pods_ChatterBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */; };
+		A2D814A1D569409AF9A73B01 /* libPods-ChatterBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD160EFB39935266968B30A5 /* libPods-ChatterBox.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		2BE207A123F80AFE0094EDD6 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
 		2BE207A323F8217A0094EDD6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BE207A723F878B00094EDD6 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
-		6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatterBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7209D5B0051A72C3989CD1EF /* Pods-ChatterBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.debug.xcconfig"; path = "Target Support Files/Pods-ChatterBox/Pods-ChatterBox.debug.xcconfig"; sourceTree = "<group>"; };
+		AD160EFB39935266968B30A5 /* libPods-ChatterBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChatterBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E7C74EDD45630C7E01DB9E /* Pods-ChatterBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.release.xcconfig"; path = "Target Support Files/Pods-ChatterBox/Pods-ChatterBox.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E0F5E15A304511773714BBC /* Pods_ChatterBox.framework in Frameworks */,
+				A2D814A1D569409AF9A73B01 /* libPods-ChatterBox.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 		54C9A808F240996C9DF98EAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */,
+				AD160EFB39935266968B30A5 /* libPods-ChatterBox.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,7 +117,6 @@
 				2B58300623F79A1400C375AD /* Sources */,
 				2B58300723F79A1400C375AD /* Frameworks */,
 				2B58300823F79A1400C375AD /* Resources */,
-				CA2C9146674540D501DF4BEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,23 +194,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA2C9146674540D501DF4BEB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChatterBox/Pods-ChatterBox-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChatterBox/Pods-ChatterBox-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChatterBox/Pods-ChatterBox-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

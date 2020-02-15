@@ -1,4 +1,4 @@
-framework module Pods_ChatterBox {
+module Pods_ChatterBox {
   umbrella header "Pods-ChatterBox-umbrella.h"
 
   export *

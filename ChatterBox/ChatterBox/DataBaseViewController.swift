@@ -65,7 +65,7 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
                         }
                     }
                     let max_emotion = emotions_dict.max { a, b in a.value < b.value }
-                    let best_emotion = (max_emotion?.key)!
+                    guard let best_emotion = (max_emotion?.key) else {return}
                     friends.append(Friend(friend_name, best_emotion, keywords, url))
                 }
                 Globals.friends = friends.sorted(by: { $0.name > $1.name })
