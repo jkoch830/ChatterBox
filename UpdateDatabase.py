@@ -10,7 +10,6 @@ def update(user, friend, new_key_words, new_emotion):
                                      friend + '/', '')
     keys = list(raw_dict.keys())
     key_code = keys[0]
-    friend_data = raw_dict[keys[0]]
     firebase_database.put(ENTRY_URL + user + '/' + friend + '/' + key_code,
                           'Emotion', new_emotion)
     firebase_database.put(ENTRY_URL + user + '/' + friend + '/' + key_code,

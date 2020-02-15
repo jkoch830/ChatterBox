@@ -39,10 +39,7 @@ def post_data(user, friend, key_words, emotion, photo):
     data = {'Key Words': key_words, 'Emotion': emotion}
 
     if not SearchDatabase.user_in_database(user):   # user not in database
-        print("BEFORE POST")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
-        print("AFTER POST")
-
     elif SearchDatabase.current_friend_of_user(user, friend):
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes repeats
@@ -50,12 +47,6 @@ def post_data(user, friend, key_words, emotion, photo):
 
     else:       # user is in database but friend is not
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
-
-
-#post_data("Edward", "Sophia", ['fifth', 'first'], 'awake')
-#SearchDatabase.search_database('Edward')
-#SearchDatabase.user_in_database("Edward")
-
 
 
 @app.route("/enter", methods=['POST'])
@@ -76,24 +67,17 @@ def enter_new_conversation():
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
     data = {"failed": False}
-    print("RETRIEVING...")
-    print("request.method: ", request.method)
     if request.method == 'POST':            # retrieve_data
         info = request.get_json()
         user = info['user']
-        print("CALLED POST")
         if SearchDatabase.user_in_database(user):
             storage = p_firebase.storage()
             data = SearchDatabase.search_database(user)
-            print("DATA", data)
             friends = data.keys().sort()
-            print("FRIENDS: ", friends)
             for friend in friends:
                 name = user + "_" + friend + ".jpg"
                 url = storage.child(name).get_url("")
                 data[friend]['url'] = url
-
-    print("SKIPPED POST")
     return jsonify(data)
 
 
