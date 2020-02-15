@@ -14,23 +14,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SearchDatabase.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="-40">
+              <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#87#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebServer.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SearchDatabase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="50" column="27" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#87#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="206">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -112,7 +112,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="187" />
+    <option name="x" value="431" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="837" />
@@ -275,18 +275,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="187" y="23" width="1400" height="837" extended-state="0" />
+    <frame x="431" y="23" width="1400" height="837" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24945612" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49891225" visible="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49891225" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50181293" side_tool="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32885906" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32885906" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32885906" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4981871" weight="0.32885906" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4981871" visible="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -352,13 +353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SearchDatabase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UpdateDatabase.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -366,10 +360,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SearchDatabase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="50" column="27" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+        <state relative-caret-position="-40">
+          <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
           <folding>
             <element signature="e#0#87#0" expanded="true" />
           </folding>
