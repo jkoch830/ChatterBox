@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
        }
     
     @IBAction func didPressSubmit(_ sender: Any) {
-        guard let name = nameTextView.text else { return }
+        guard let name = nameTextView.text where !name.isEmpty else { return }
         Globals.name = name.capitalized
     }
 }
