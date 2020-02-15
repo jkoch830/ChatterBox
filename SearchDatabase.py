@@ -12,16 +12,16 @@ def user_in_database(user):
             return True
     return False
 
+
 # returns all data of a user
 def search_database(user):
     result = firebase_database.get('chatterbox-83fc3/Users/' + user, '')
-    print(result)
+    return result
 
 
 # returns true if user already has friend in database
 def current_friend_of_user(user, friend):
     user_dict = firebase_database.get('chatterbox-83fc3/Users/' + user, '')
-    print(user_dict)
     if user_dict is not None and friend in user_dict:
         return True
     else:

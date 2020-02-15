@@ -21,16 +21,14 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 def post_data(user, friend, key_words, emotion, photo):
     data = {'Key Words': key_words, 'Emotion': emotion, 'Photo': photo}
+    print(data)
     if not SearchDatabase.user_in_database(user):   # user not in database
-        print("NOT GREAT")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
     elif SearchDatabase.current_friend_of_user(user, friend):
-        print("NOT GOOD")
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes
         UpdateDatabase.update(user, friend, edited, emotion)
     else:       # user is in database but friend is not
-        print("POSTING DATA")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
 
 
@@ -41,31 +39,28 @@ def post_data(user, friend, key_words, emotion, photo):
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
     if request.method == 'POST':    # new conversation
-        print("before")
         data = request.form
-        print("TYPE OF DATA: ", type(data))
-        print("data", data)
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
-        print("before photo")
         photo = request.files.get("profilePicture")
-        print("after photo")
-        print(user, friend, conversation, photo)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
-        print("right before post_data")
         post_data(user, friend, key_words, emotion, photo)   # posts data
-    print("SUCCESS")
     data = {"success": True}
     return jsonify(data)
 
 
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
+    data = {"failed": False}
     if request.method == 'POST':            # retrieve_data
         info = request.form
         user = info['user']
+        friend = info['friend']
         if SearchDatabase.user_in_database(user):
             data = SearchDatabase.search_database(user)
-            return jsonify(data)
+    return jsonify(data)
+
+#res = SearchDatabase.search_database('Edward')
+#print(res)
