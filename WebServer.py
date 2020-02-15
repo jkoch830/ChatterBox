@@ -53,7 +53,7 @@ def enter_new_conversation():
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
     if request.method == 'POST':            # retrieve_data
-        info = request.get_json()
+        info = request.form
         user = info['user']
         if SearchDatabase.user_in_database(user):
             data = SearchDatabase.search_database(user)
