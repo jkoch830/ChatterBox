@@ -10,7 +10,7 @@ import UIKit
 
 class Globals: NSObject {
     static var name: String = ""
-    static var friends: [String] = []
+    static var friends: [Friend] = []
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -29,9 +29,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-              self.view.endEditing(true)
-              return false
-       }
+      self.view.endEditing(true)
+      return false
+   }
     
     @IBAction func didPressSubmit(_ sender: Any) {
         guard let name = nameTextView.text, !name.isEmpty else { return }

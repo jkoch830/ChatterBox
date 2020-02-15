@@ -75,8 +75,8 @@
 			children = (
 				2B58300D23F79A1400C375AD /* AppDelegate.swift */,
 				2B58300F23F79A1400C375AD /* SceneDelegate.swift */,
-				2BE207A323F8217A0094EDD6 /* ViewController.swift */,
 				2BE207A723F878B00094EDD6 /* Friends.swift */,
+				2BE207A323F8217A0094EDD6 /* ViewController.swift */,
 				2B58301123F79A1400C375AD /* ScrollViewController.swift */,
 				2BD23CDC23F7AC4B000C4EFA /* RecordViewController.swift */,
 				2BE207A123F80AFE0094EDD6 /* DataBaseViewController.swift */,

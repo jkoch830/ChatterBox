@@ -30,7 +30,7 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
     @objc
     func refreshDataBase(_ sender: Any) {
         let url = "https://chatterboxweb.herokuapp.com/retrieve"
-        let params = ["user" : "Edward"]
+        let params = ["user" : Globals.name]
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -49,7 +49,7 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return Globals.friends.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -60,6 +60,12 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "tvcell", for: indexPath) as? DataBaseTableViewCell else {
             fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
         }
+        let idx = indexPath.row
+        let friend = Globals.friends[idx]
+        
+        cell.nameLabel.text = friend.name
+        cell.dataLabel.text = friend.emotion
+        
         return cell
     }
 
