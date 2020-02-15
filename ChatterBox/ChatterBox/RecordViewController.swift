@@ -126,7 +126,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             picture = image
             imagePicker.dismiss(animated: true, completion: didFinishTakingPic)
-            self.dismiss(animated: false, completion: nil)
         }
     }
     

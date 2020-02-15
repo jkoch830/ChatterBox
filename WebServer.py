@@ -10,7 +10,7 @@ import EmotionScanner
 import SearchDatabase
 import UpdateDatabase
 
-
+# <FileStorage: 'profilePicture.jpeg' ('image/jpeg')>
 # https://chatterboxweb.herokuapp.com/
 app = Flask(__name__)
 
