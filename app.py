@@ -73,7 +73,7 @@ def retrieve_data():
         if SearchDatabase.user_in_database(user):
             storage = p_firebase.storage()
             data = SearchDatabase.search_database(user)
-            friends = data.keys().sort()
+            friends = data.keys()
             for friend in friends:
                 name = user + "_" + friend + ".jpg"
                 url = storage.child(name).get_url("")
