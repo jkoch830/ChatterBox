@@ -14,7 +14,8 @@ DATABASE_URL = "https://chatterbox-83fc3.firebaseio.com/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
-
+def post_data(user, friend, key_words):
+    pass
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -24,7 +25,7 @@ def enter_new_conversation():
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
-        key_words =
+        key_words = SpeechParse.get_key_words(conversation)
         post_data(user, friend, key_words)   # posts data
         return jsonify({'emotion' : '', 'keyWords' : []})
     elif request.method == 'GET':   # retrieving data
