@@ -86,6 +86,7 @@ def retrieve_data():
         if SearchDatabase.user_in_database(user):
             storage = p_firebase.storage()
             data = SearchDatabase.search_database(user)
+            friends = data.keys()
             print("DATA", data)
             friends = data.keys()
             print("FRIENDS: ", friends)
