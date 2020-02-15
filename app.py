@@ -31,8 +31,12 @@ def post_data(user, friend, key_words, emotion, photo):
     temp = tempfile.NamedTemporaryFile(delete=False)
     photo.save(temp.name)
     storage = p_firebase.storage()
+<<<<<<< HEAD
     name = user + "_" + friend
     storage.child(name + ".jpg").put(temp.name)
+=======
+    storage.child(user + "_" + friend + ".jpg").put(temp.name)
+>>>>>>> 5f7d155bbe08e5a5439fb3b046c975bcaed3b599
     os.remove(temp.name)
 
     data = {'Key Words': key_words, 'Emotion': emotion}
@@ -73,6 +77,8 @@ def enter_new_conversation():
 
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
+    storage = p_firebase.storage()
+    print(storage.child("example.jpg").get_url(""))
     data = {"failed": False}
     if request.method == 'POST':            # retrieve_data
         info = request.form
