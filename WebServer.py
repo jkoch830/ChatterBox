@@ -48,6 +48,8 @@ def enter_new_conversation():
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion)   # posts data
+    data = {"success": True}
+    return jsonify(data)
 
 
 @app.route("/retrieve", methods=['POST'])
