@@ -115,7 +115,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
             }
 
             if result.isFinal {
-                self.present(self.imagePicker, animated: true, completion: nil)
+                self.present(self.imagePicker, animated: true)
                 self.speech = result.bestTranscription.formattedString
                 print(self.speech)
             }
@@ -132,48 +132,60 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     func didFinishTakingPic() {
         guard let image = picture else { return }
         
-        let alert = UIAlertController(title: nil, message: "Hang on just a bit...", preferredStyle: .alert)
-        
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.medium
-        loadingIndicator.startAnimating()
-
-        alert.view.addSubview(loadingIndicator)
-        self.present(alert, animated: true, completion: nil)
-        
-        let imgData = image.jpegData(compressionQuality: 0.5)!
-        
-        let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
-        
-        let parameters = ["user": "Edward", "friend": "James", "conversation": self.speech]
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in parameters {
-                    multipartFormData.append(value.data(using: .utf8)!, withName: key)
-                }
-                multipartFormData.append(imgData, withName: "profilePicture", fileName: "profilePicture.jpeg", mimeType: "image/jpeg")
-        }, to: uploadURL) { (result) in
-                    switch result {
-                    case .success(let upload, _, _):
-                        upload.responseJSON { response in
-                            switch response.result {
-                            case .success(let value):
-                                let json = JSON(value)
-                                print("JSON: \(json)")
-                                self.dismiss(animated: false, completion: nil)
-                                let alert = UIAlertController(title: "Information Saved!", message: nil, preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-
-                                self.present(alert, animated: true)
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                    case .failure(let encodingError):
-                        print(encodingError)
+        let alertController = UIAlertController(title: "Type in person's name below!", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Name"
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            
+            let alert = UIAlertController(title: nil, message: "Hang on just a bit...", preferredStyle: .alert)
+    
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.style = UIActivityIndicatorView.Style.medium
+            loadingIndicator.startAnimating()
+    
+            alert.view.addSubview(loadingIndicator)
+            self.present(alert, animated: true)
+                    
+            let imgData = image.jpegData(compressionQuality: 0.5)!
+            
+            let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
+            
+            let parameters = ["user": Globals.name, "friend": textField.text!.capitalized, "conversation": self.speech]
+            Alamofire.upload(
+                multipartFormData: { multipartFormData in
+                    for (key, value) in parameters {
+                        multipartFormData.append(value.data(using: .utf8)!, withName: key)
                     }
-                }
+                    multipartFormData.append(imgData, withName: "profilePicture", fileName: "profilePicture.jpeg", mimeType: "image/jpeg")
+            }, to: uploadURL) { (result) in
+                        switch result {
+                        case .success(let upload, _, _):
+                            upload.responseJSON { response in
+                                switch response.result {
+                                case .success(let value):
+                                    let json = JSON(value)
+                                    print("JSON: \(json)")
+                                    self.dismiss(animated: false, completion: nil)
+                                    let alert = UIAlertController(title: "Information Saved!", message: nil, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
+                                    self.present(alert, animated: true)
+                                case .failure(let error):
+                                    print(error)
+                                }
+                            }
+                        case .failure(let encodingError):
+                            print(encodingError)
+                        }
+                    }
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
 
     @IBAction func pressedRecord(_ sender: Any) {
