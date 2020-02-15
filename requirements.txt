@@ -11,3 +11,4 @@ sseclient
 Crypto
 pycryptodome
 requests_toolbelt
+psycopg2
