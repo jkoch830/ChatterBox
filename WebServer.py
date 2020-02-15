@@ -48,7 +48,7 @@ def enter_new_conversation():
         return jsonify({'emotion' : '', 'keyWords' : []})
     elif request.method == 'GET':   # retrieving data
         print("REQUESTING DATA", request)
-        info = request.json()
+        info = request.json
         print(info)
         user = info['user']
         data = SearchDatabase.search_database(user)
