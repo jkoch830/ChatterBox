@@ -23,7 +23,7 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
 def upload_photo(photo):
-    sto = firebase_ser.storage()
+    # sto = firebase.storage()
     # sto.child("images/apple.jpg").put("download.jpg")
     temp = tempfile.NamedTemporaryFile(delete=False)
     picture.save(temp.name)
