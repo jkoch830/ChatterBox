@@ -8,78 +8,132 @@
 
 import UIKit
 import AVFoundation
+import Speech
 
-class LeftViewController: UIViewController, AVAudioPlayerDelegate {
+class LeftViewController: UIViewController, AVAudioRecorderDelegate {
 
-    @IBOutlet weak var recordButton: UIView!
     @IBOutlet var soundBars: [UIView]!
+    @IBOutlet weak var recordButton: UIButton!
     
-    var recordPress = UIGestureRecognizer()
     var isRecording = false
-    weak var timer: Timer?
-    
-    var recorder = AVAudioRecorder()
+        
+    let fileName = "record.m4a"
+        
+    var filemanager = FileManager.default
+    var audioRecorder = AVAudioRecorder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
-        self.recordButton.addGestureRecognizer(recordPress)
-        recordPress.addTarget(self, action: #selector(pressRecord))
-        self.setupRecorder()
-
-        
-    }
-    
-    func setupRecorder() {
-        var recordSettings = [AVFormatIDKey : kAudioFormatAppleLossless,
-                              AVEncoderAudioQualityKey : .max,
-                              AVEncoderBitRateKey : 320000,
-                              AVNumberOfChannelsKey : 2,
-                              AVSampleRateKey : 44100 ]
-        
-        var error : NSError?
-        
-        self.recorder = AVAudioRecorder(URL: getFileURL(), settings: recordSettings as [NSObject : AnyObject], error: &error)
-        
-        if let err = error{
-            print("SOmething Wrong")
+        requestTranscribePermissions()
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .spokenAudio, options: .defaultToSpeaker)
         }
             
-        else {
-            self.recorder.delegate = self
-            self.recorder.prepareToRecord()
+        catch {
+            print("could not set session category")
+            print(error.localizedDescription)
         }
         
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("could not make session active")
+            print(error.localizedDescription)
+        }
+        
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 44100,
+            AVEncoderBitRateKey : 320000,
+            AVNumberOfChannelsKey : 2,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
+        
+        let fileURL = getFileURL()
+        if FileManager.default.fileExists(atPath: fileURL.absoluteString) {
+            print("soundfile \(fileURL.absoluteString) exists")
+        }
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: fileURL, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.prepareToRecord()
+        } catch {
+            print("bad")
+        }
+    }
+    
+    func startRecording() {
+        audioRecorder.record()
+    }
+    
+    func finishRecording() {
+        self.audioRecorder.stop()
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getFileURL() -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent(fileName)
+        return path as URL
+    }
+    
+    func requestTranscribePermissions() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            DispatchQueue.main.async {
+                if authStatus == .authorized {
+                    print("Good to go!")
+                } else {
+                    print("Transcription permission was declined.")
+                }
+            }
+        }
+    }
+    
+    func transcribeAudio(url: URL) {
+        // create a new recognizer and point it at our audio
+        let recognizer = SFSpeechRecognizer()
+        let request = SFSpeechURLRecognitionRequest(url: url)
+
+        // start recognition!
+        recognizer?.recognitionTask(with: request) { (result, error) in
+            // abort if we didn't get any transcription back
+            guard let result = result else {
+                print("There was an error: \(error!)")
+                return
+            }
+
+            // if we got the final transcription back, print it
+            if result.isFinal {
+                // pull out the best transcription...
+                print(result.bestTranscription.formattedString)
+            }
+        }
     }
 
-    
-    @objc
-    func pressRecord() {
-        if !isRecording {
-            self.recordButton.isHidden = true
+    @IBAction func pressedRecord(_ sender: Any) {
+        if !self.audioRecorder.isRecording {
+            for bar in self.soundBars {
+                bar.isHidden = false
+            }
+            UIView.animate(withDuration: 0.75, delay: 0, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+                for bar in self.soundBars {
+                    bar.transform = CGAffineTransform(scaleX: 1, y: CGFloat.random(in: 0.2..<2.0))
+                }
+            }, completion: nil)
+            startRecording()
         }
         else {
-            self.recordButton.isHidden = false
+            for bar in self.soundBars {
+                bar.isHidden = true
+            }
+            finishRecording()
+            transcribeAudio(url: getFileURL())
         }
         isRecording = !isRecording
     }
-    
-    @objc
-    func timerFired() {
-        if isRecording {
-            for bar in self.soundBars {
-                let newHeight: CGFloat = CGFloat.random(in: 20..<500)
-                bar.frame = CGRect(x: bar.center.x, y: bar.center.y, width: bar.frame.width, height: newHeight)
-            }
-        }
-        else {
-            for bar in self.soundBars {
-                let newHeight: CGFloat = 125
-                bar.frame = CGRect(x: bar.center.x, y: bar.center.y, width: bar.frame.width, height: newHeight)
-            }
-        }
-    }
-
 }

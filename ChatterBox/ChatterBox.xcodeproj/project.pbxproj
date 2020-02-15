@@ -13,8 +13,7 @@
 		2B58301523F79A1400C375AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B58301323F79A1400C375AD /* Main.storyboard */; };
 		2B58301723F79A1900C375AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B58301623F79A1900C375AD /* Assets.xcassets */; };
 		2B58301A23F79A1900C375AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B58301823F79A1900C375AD /* LaunchScreen.storyboard */; };
-		3AE29C0D23F7A601009E7AFC /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE29C0B23F7A601009E7AFC /* View1.swift */; };
-		3AE29C0E23F7A601009E7AFC /* View1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE29C0C23F7A601009E7AFC /* View1.xib */; };
+		2BD23CDD23F7AC4B000C4EFA /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD23CDC23F7AC4B000C4EFA /* LeftViewController.swift */; };
 		3AE29C1123F7A6F6009E7AFC /* View2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE29C0F23F7A6F6009E7AFC /* View2.swift */; };
 		3AE29C1223F7A6F6009E7AFC /* View2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE29C1023F7A6F6009E7AFC /* View2.xib */; };
 /* End PBXBuildFile section */
@@ -28,8 +27,7 @@
 		2B58301623F79A1900C375AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B58301923F79A1900C375AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B58301B23F79A1900C375AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AE29C0B23F7A601009E7AFC /* View1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
-		3AE29C0C23F7A601009E7AFC /* View1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View1.xib; sourceTree = "<group>"; };
+		2BD23CDC23F7AC4B000C4EFA /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		3AE29C0F23F7A6F6009E7AFC /* View2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View2.swift; sourceTree = "<group>"; };
 		3AE29C1023F7A6F6009E7AFC /* View2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View2.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,11 +65,10 @@
 				2B58300D23F79A1400C375AD /* AppDelegate.swift */,
 				2B58300F23F79A1400C375AD /* SceneDelegate.swift */,
 				2B58301123F79A1400C375AD /* ViewController.swift */,
-				2B58301323F79A1400C375AD /* Main.storyboard */,
+				2BD23CDC23F7AC4B000C4EFA /* LeftViewController.swift */,
 				3AE29C0F23F7A6F6009E7AFC /* View2.swift */,
+				2B58301323F79A1400C375AD /* Main.storyboard */,
 				3AE29C1023F7A6F6009E7AFC /* View2.xib */,
-				3AE29C0B23F7A601009E7AFC /* View1.swift */,
-				3AE29C0C23F7A601009E7AFC /* View1.xib */,
 				2B58301623F79A1900C375AD /* Assets.xcassets */,
 				2B58301823F79A1900C375AD /* LaunchScreen.storyboard */,
 				2B58301B23F79A1900C375AD /* Info.plist */,
@@ -139,7 +136,6 @@
 			files = (
 				2B58301A23F79A1900C375AD /* LaunchScreen.storyboard in Resources */,
 				2B58301723F79A1900C375AD /* Assets.xcassets in Resources */,
-				3AE29C0E23F7A601009E7AFC /* View1.xib in Resources */,
 				3AE29C1223F7A6F6009E7AFC /* View2.xib in Resources */,
 				2B58301523F79A1400C375AD /* Main.storyboard in Resources */,
 			);
@@ -155,7 +151,7 @@
 				3AE29C1123F7A6F6009E7AFC /* View2.swift in Sources */,
 				2B58301223F79A1400C375AD /* ViewController.swift in Sources */,
 				2B58300E23F79A1400C375AD /* AppDelegate.swift in Sources */,
-				3AE29C0D23F7A601009E7AFC /* View1.swift in Sources */,
+				2BD23CDD23F7AC4B000C4EFA /* LeftViewController.swift in Sources */,
 				2B58301023F79A1400C375AD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
