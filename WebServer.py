@@ -5,6 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
+import SpeechParse
 
 
 # https://chatterboxweb.herokuapp.com/
@@ -26,7 +27,8 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         key_words = SpeechParse.get_key_words(conversation)
-        post_data(user, friend, key_words)   # posts data
+        emotion =
+        post_data(user, friend, key_words, emotion)   # posts data
         return jsonify({'emotion' : '', 'keyWords' : []})
     elif request.method == 'GET':   # retrieving data
         data = request.json
