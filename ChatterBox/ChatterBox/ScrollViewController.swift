@@ -39,7 +39,6 @@ class ScrollViewController: UIViewController {
         self.scrollView.showsVerticalScrollIndicator = false
         self.view = self.scrollView
     }
-
 }
 
 extension UIView {

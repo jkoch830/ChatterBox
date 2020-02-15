@@ -149,7 +149,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
             alert.view.addSubview(loadingIndicator)
             self.present(alert, animated: true)
                     
-            let imgData = image.jpegData(compressionQuality: 0.5)!
+            let imgData = image.jpegData(compressionQuality: 1.0)!
             
             let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
             
@@ -193,7 +193,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
             for bar in self.soundBars {
                 bar.isHidden = false
             }
-            UIView.animate(withDuration: 0.75, delay: 0, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
                 for bar in self.soundBars {
                     bar.transform = CGAffineTransform(scaleX: 1, y: CGFloat.random(in: 0.2..<2.0))
                 }
