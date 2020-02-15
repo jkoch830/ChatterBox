@@ -31,8 +31,11 @@ STORAGE_URL = "chatterbox-83fc3.appspot.com/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 def post_data(user, friend, key_words, emotion, photo):
+    temp = tempfile.NamedTemporaryFile(delete=False)
+    photo.save(temp.name)
     storage = p_firebase.storage()
-    storage.child("friends/example.jpg").put(photo)
+    storage.child("friends/example.jpg").put(temp.name)
+    os.remove(temp.name)
 
     data = {'Key Words': key_words, 'Emotion': emotion}
     if not SearchDatabase.user_in_database(user):   # user not in database
