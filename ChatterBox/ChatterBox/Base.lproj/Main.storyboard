@@ -219,7 +219,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7J-Tx-vdA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7J-Tx-vdA">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -289,7 +289,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="15"/>
@@ -318,12 +318,12 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JFu-Ww-qtD" firstAttribute="trailing" secondItem="wr7-1c-LuL" secondAttribute="trailing" id="2Lt-Bf-8W0"/>
                             <constraint firstItem="wr7-1c-LuL" firstAttribute="bottom" secondItem="Q7J-Tx-vdA" secondAttribute="bottom" id="DvQ-oL-1YZ"/>
                             <constraint firstItem="wr7-1c-LuL" firstAttribute="trailing" secondItem="Q7J-Tx-vdA" secondAttribute="trailing" id="Ecs-4H-nRu"/>
-                            <constraint firstItem="Q7J-Tx-vdA" firstAttribute="top" secondItem="36n-fp-r4I" secondAttribute="bottom" constant="8" symbolic="YES" id="G35-Bu-aa6"/>
+                            <constraint firstItem="Q7J-Tx-vdA" firstAttribute="top" secondItem="36n-fp-r4I" secondAttribute="bottom" constant="8" symbolic="YES" id="F7X-Zm-sbH"/>
                             <constraint firstItem="Q7J-Tx-vdA" firstAttribute="leading" secondItem="wr7-1c-LuL" secondAttribute="leading" id="JOw-38-Ohy"/>
                             <constraint firstItem="JFu-Ww-qtD" firstAttribute="leading" secondItem="wr7-1c-LuL" secondAttribute="leading" id="dvJ-4d-v2v"/>
                             <constraint firstAttribute="trailing" secondItem="36n-fp-r4I" secondAttribute="trailing" id="dzu-ZN-Hhr"/>

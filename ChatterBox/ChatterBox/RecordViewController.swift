@@ -30,7 +30,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
         do {
             try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .spokenAudio, options: .defaultToSpeaker)
         }
-            
+        
         catch {
             print("could not set session category")
             print(error.localizedDescription)
@@ -67,6 +67,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
     }
     
     func startRecording() {
@@ -118,7 +119,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
-        let image = info[.originalImage] as? UIImage
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            print("yay")
+        }
     }
 
     @IBAction func pressedRecord(_ sender: Any) {
