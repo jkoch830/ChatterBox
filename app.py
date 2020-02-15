@@ -39,11 +39,11 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
-        print(photo)
-        b = io.BytesIO(photo.read())
+        # print(photo)
+        # b = io.BytesIO(photo.read())
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
-        post_data(user, friend, key_words, emotion, b)   # posts data
+        post_data(user, friend, key_words, emotion, photo)   # posts data
     data = {"success": True}
     return jsonify(data)
 
