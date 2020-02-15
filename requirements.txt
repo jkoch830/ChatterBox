@@ -7,5 +7,5 @@ paralleldots
 python_jwt
 gcloud
 sseclient
-crypto
+Crypto
 requests_toolbelt

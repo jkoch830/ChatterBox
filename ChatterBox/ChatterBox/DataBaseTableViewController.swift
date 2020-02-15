@@ -18,6 +18,7 @@ class DataBaseTableViewController: UITableViewController {
         refreshControl!.addTarget(self, action: #selector(refreshDataBase), for: .valueChanged)
 
         self.clearsSelectionOnViewWillAppear = false
+        self.tableView.contentInset.top = 100
     }
     
     @objc func refreshDataBase(_ sender: Any) {
