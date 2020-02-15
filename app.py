@@ -80,6 +80,7 @@ def retrieve_data():
     if request.method == 'POST':            # retrieve_data
         info = request.form
         user = info['user']
+        print("CALLED POST")
         if SearchDatabase.user_in_database(user):
             storage = p_firebase.storage()
             data = SearchDatabase.search_database(user)
