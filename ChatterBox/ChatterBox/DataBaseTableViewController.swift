@@ -18,13 +18,13 @@ class DataBaseTableViewController: UITableViewController {
         refreshControl!.addTarget(self, action: #selector(refreshDataBase), for: .valueChanged)
 
         self.clearsSelectionOnViewWillAppear = false
-        self.tableView.contentInset.top = 100
     }
     
     @objc func refreshDataBase(_ sender: Any) {
-        let url = "https://mixerserver.herokuapp.com/dbcontents"
+        let url = "https://chatterboxweb.herokuapp.com/"
         Alamofire.request(url, method: .get).responseJSON { response in
             if let json = response.result.value {
+                print(json)
                 self.refreshControl!.endRefreshing()
             }
         }
