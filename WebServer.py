@@ -52,8 +52,8 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
-        print(photo.encoding)
-        return jsonify(bytes(photo.encoding, 'utf-8'))
+        print(photo)
+        return jsonify(bytes(photo, 'utf-8'))
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data
