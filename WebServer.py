@@ -43,6 +43,7 @@ def enter_new_conversation():
     if request.method == 'POST':    # new conversation
         print("before")
         data = request.form
+        print("TYPE OF DATA: ", type(data))
         print("data", data)
         user = data['user']
         friend = data['friend']
