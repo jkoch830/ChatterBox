@@ -38,7 +38,7 @@ SearchDatabase.search_database('Edward')
 @app.route("/", methods=['POST', 'GET'])
 def enter_new_conversation():
     if request.method == 'POST':    # new conversation
-        data = request.json
+        data = request.get_json()
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
@@ -47,10 +47,17 @@ def enter_new_conversation():
         post_data(user, friend, key_words, emotion)   # posts data
         return jsonify({'emotion' : '', 'keyWords' : []})
     elif request.method == 'GET':   # retrieving data
+<<<<<<< HEAD
         print("REQUESTING DATA")
         info = request.json
+=======
+        print("REQUESTING DATA", request)
+        info = request.get_json()
+        print(info)
+>>>>>>> b1d100e8eda99b5ce85505ffc339dd7ff2a76991
         user = info['user']
         data = SearchDatabase.search_database(user)
+        print(data)
         return jsonify(data)
     return "Hello, World"
 
