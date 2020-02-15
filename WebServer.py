@@ -33,7 +33,7 @@ def post_data(user, friend, key_words, emotion, photo):
     elif SearchDatabase.current_friend_of_user(user, friend):
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes
-        UpdateDatabase.update(user, friend, edited, emotion)
+        UpdateDatabase.update(user, friend, edited, emotion, photo)
     else:       # user is in database but friend is not
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
 
