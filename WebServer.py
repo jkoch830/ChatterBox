@@ -47,8 +47,9 @@ def enter_new_conversation():
         post_data(user, friend, key_words, emotion)   # posts data
         return jsonify({'emotion' : '', 'keyWords' : []})
     elif request.method == 'GET':   # retrieving data
-        print("REQUESTING DATA")
+        print("REQUESTING DATA", request)
         info = request.json()
+        print(info)
         user = info['user']
         data = SearchDatabase.search_database(user)
         return jsonify(data)
