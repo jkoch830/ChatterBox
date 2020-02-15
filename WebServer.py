@@ -23,7 +23,9 @@ def post_data(user, friend, key_words, emotion, photo):
     data = {'Key Words': key_words, 'Emotion': emotion, 'Photo': photo}
     print(data)
     if not SearchDatabase.user_in_database(user):   # user not in database
+        print("BEFORE POST")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
+        print("AFTER POST")
     elif SearchDatabase.current_friend_of_user(user, friend):
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes
@@ -44,6 +46,7 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
+        print("RECEIVED PHOTO")
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data

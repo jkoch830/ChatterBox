@@ -14,7 +14,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatterbox1" translatesAutoresizingMaskIntoConstraints="NO" id="3Um-dd-YEs">
+                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="c42-Pv-Wvf"/>
+                                    <constraint firstAttribute="width" constant="150" id="qKl-rf-dtt"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Um-dd-YEs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Kdg-CU-6U0"/>
+                            <constraint firstItem="3Um-dd-YEs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qr7-R2-3qd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -23,4 +36,7 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chatterbox1" width="2880" height="1612"/>
+    </resources>
 </document>
