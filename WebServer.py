@@ -6,7 +6,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
 
-import io, os
+import io, os, tempfile
 
 
 import SpeechParse
