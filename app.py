@@ -3,9 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
-app[SQLALCHEMY_DATABASE_URI] = os.environ["DATABASE_URL"]
-app[SQLALCHEMY_TRACK_MODIFICATIONS] = False
-app[SECRET_KEY] = "8675309"
+app["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URL"]
+app["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app["SECRET_KEY"] = "8675309"
 db = SQLAlchemy(app)
 
 class Friend(db.Model):
