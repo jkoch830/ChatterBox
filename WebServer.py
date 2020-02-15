@@ -41,11 +41,14 @@ def post_data(user, friend, key_words, emotion, photo):
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
     if request.method == 'POST':    # new conversation
+        print("before")
         data = request.form
+        print("data", data)
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
         photo = data['profilePhoto']
+        print(user, friend, conversation, photo)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data

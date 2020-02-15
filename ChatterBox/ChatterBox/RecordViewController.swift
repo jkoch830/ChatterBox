@@ -148,6 +148,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
                     switch result {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in
+                            print(response)
                             switch response.result {
                             case .success(let value):
                                 let json = JSON(value)
