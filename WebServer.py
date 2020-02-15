@@ -6,7 +6,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
 
-import io
+import io, os
 
 
 import SpeechParse
@@ -22,13 +22,17 @@ STORAGE_URL = "chatterbox-83fc3.appspot.com/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
-def upload_photo():
+def upload_photo(photo):
     sto = firebase_ser.storage()
-    sto.child("images/apple.jpg").put("download.jpg")
+    # sto.child("images/apple.jpg").put("download.jpg")
+    temp = tempfile.NamedTemporaryFile(delete=False)
+    picture.save(temp.name)
+    firebase.storage().put(temp.name)
+    os.remove(temp.name)
 
 
 def post_data(user, friend, key_words, emotion, photo):
-   # upload_photo(photo)
+    upload_photo(photo)
     data = {'Key Words': key_words, 'Emotion': emotion}
     if not SearchDatabase.user_in_database(user):   # user not in database
         print("BEFORE POST")
@@ -56,7 +60,7 @@ def enter_new_conversation():
         photo = request.files.get("profilePicture")
         print(photo)
         b = io.BytesIO(photo.read())
-        return jsonify(b)
+        #return jsonify(b)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data
