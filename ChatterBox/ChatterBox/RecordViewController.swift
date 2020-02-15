@@ -143,7 +143,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
                     multipartFormData.append(value.data(using: .utf8)!, withName: key)
                 }
                 multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
-
+                print(imgData)
                 }, to: uploadURL, method: .post) { (result) in
                     switch result {
                     case .success(let upload, _, _):

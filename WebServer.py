@@ -47,10 +47,13 @@ def enter_new_conversation():
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
+        print("before photo")
         photo = data['profilePhoto']
+        print("after photo")
         print(user, friend, conversation, photo)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
+        print("right before post_data")
         post_data(user, friend, key_words, emotion, photo)   # posts data
     print("SUCCESS")
     data = {"success": True}
