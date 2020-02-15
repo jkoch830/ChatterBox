@@ -68,6 +68,7 @@ def retrieve_data():
         friend = info['friend']
         if SearchDatabase.user_in_database(user):
             data = SearchDatabase.search_database(user)
+
     return jsonify(data)
 
 

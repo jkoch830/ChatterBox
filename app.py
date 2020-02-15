@@ -5,10 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
-
-import io, os, tempfile
-
-
+import os, tempfile
 import SpeechParse
 import EmotionScanner
 import SearchDatabase
@@ -34,7 +31,8 @@ def post_data(user, friend, key_words, emotion, photo):
     temp = tempfile.NamedTemporaryFile(delete=False)
     photo.save(temp.name)
     storage = p_firebase.storage()
-    storage.child("example.jpg").put(temp.name)
+    name = user + "_" + friend
+    storage.child(name + ".jpg").put(temp.name)
     os.remove(temp.name)
 
     data = {'Key Words': key_words, 'Emotion': emotion}
@@ -53,6 +51,8 @@ def post_data(user, friend, key_words, emotion, photo):
 #post_data("Edward", "Sophia", ['fifth', 'first'], 'awake')
 #SearchDatabase.search_database('Edward')
 #SearchDatabase.user_in_database("Edward")
+
+
 
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
@@ -80,7 +80,10 @@ def retrieve_data():
         friend = info['friend']
         if SearchDatabase.user_in_database(user):
             data = SearchDatabase.search_database(user)
+
     return jsonify(data)
+
 
 #res = SearchDatabase.search_database('Edward')
 #print(res)
+
