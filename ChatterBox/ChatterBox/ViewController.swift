@@ -12,7 +12,7 @@ class Globals: NSObject {
     static var name: String = ""
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextView: UITextField!
     @IBOutlet weak var submitButton: UIButton!
@@ -23,7 +23,14 @@ class ViewController: UIViewController {
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
+ 
+        self.nameTextView.delegate = self
     }
+    
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+       }
     
     @IBAction func didPressSubmit(_ sender: Any) {
         guard let name = nameTextView.text else { return }

@@ -7,6 +7,8 @@ from firebase_admin import db
 from firebase import firebase
 from gcloud import storage
 
+import io
+
 
 import SpeechParse
 import EmotionScanner
@@ -53,6 +55,12 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
+<<<<<<< HEAD
+=======
+        print(photo)
+        b = io.BytesIO(photo.read())
+        return jsonify(b)
+>>>>>>> fc7f950f01b0bb59c86c03b0280c86fb2a00c5fa
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data
