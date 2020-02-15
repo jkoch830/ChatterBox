@@ -7,6 +7,7 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 # returns true if user is in database
 def user_in_database(user):
     data = firebase_database.get('chatterbox-83fc3/', '')
+    print("CHECKING IF IN DATAL: ", data)
     if data is not None:
         if user in data['Users']:
             return True
