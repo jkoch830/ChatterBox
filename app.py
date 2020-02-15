@@ -67,6 +67,7 @@ def enter_new_conversation():
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
     data = {"failed": False}
+    print(request.method)
     if request.method == 'POST':            # retrieve_data
         info = request.get_json()
         user = info['user']
