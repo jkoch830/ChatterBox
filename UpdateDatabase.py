@@ -8,11 +8,9 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 def update(user, friend, new_key_words, new_emotion):
     raw_dict = firebase_database.get(ENTRY_URL + user + '/' +
                                      friend + '/', '')
-    print(raw_dict)
     keys = list(raw_dict.keys())
     key_code = keys[0]
     friend_data = raw_dict[keys[0]]
-    print(friend_data)
     firebase_database.put(ENTRY_URL + user + '/' + friend + '/' + key_code,
                           'Emotion', new_emotion)
     firebase_database.put(ENTRY_URL + user + '/' + friend + '/' + key_code,

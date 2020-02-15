@@ -45,7 +45,7 @@ def post_data(user, friend, key_words, emotion, photo):
 
     elif SearchDatabase.current_friend_of_user(user, friend):
         current_key_words = SearchDatabase.get_key_words(user, friend)
-        edited = list(set(current_key_words + key_words))  # removes
+        edited = list(set(current_key_words + key_words))  # removes repeats
         UpdateDatabase.update(user, friend, edited, emotion)
 
     else:       # user is in database but friend is not
@@ -76,6 +76,7 @@ def enter_new_conversation():
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
     data = {"failed": False}
+    print("RETRIEVING...")
     if request.method == 'POST':            # retrieve_data
         info = request.form
         user = info['user']
