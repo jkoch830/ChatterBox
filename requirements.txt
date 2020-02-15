@@ -1,5 +1,4 @@
 Flask
-flask_sqlalchemy
 gunicorn
 firebase-admin
 firebase
@@ -11,4 +10,3 @@ sseclient
 Crypto
 pycryptodome
 requests_toolbelt
-psycopg2
