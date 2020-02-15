@@ -78,7 +78,7 @@ def retrieve_data():
     data = {"failed": False}
     print("RETRIEVING...")
     if request.method == 'POST':            # retrieve_data
-        info = request.form
+        info = request.get_json()
         user = info['user']
         print("CALLED POST")
         if SearchDatabase.user_in_database(user):
@@ -90,6 +90,7 @@ def retrieve_data():
                 name = user + "_" + friend + ".jpg"
                 url = storage.child(name).get_url("")
                 data[friend]['url'] = url
+    print("SKIPPED POST")
     return jsonify(data)
 
 
