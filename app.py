@@ -1,6 +1,19 @@
 from flask import Flask, request, redirect, url_for, render_template, Response, jsonify
 import pyrebase
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+from firebase import firebase
+
+import io, os, tempfile
+
+
+import SpeechParse
+import EmotionScanner
+import SearchDatabase
+import UpdateDatabase
+
 config = {
     "apiKey": "4XqGkMlhGvO3sIr3PFliJbblTdfhM8O0NYAVnItsiJM",
     "authDomain": "chatterbox-83fc3.firebaseapp.com",
