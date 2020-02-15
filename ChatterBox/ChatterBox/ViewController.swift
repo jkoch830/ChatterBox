@@ -12,7 +12,7 @@ class Globals: NSObject {
     static var name: String = ""
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextView: UITextField!
     @IBOutlet weak var submitButton: UIButton!
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             overrideUserInterfaceStyle = .light
         }
  
-    self.myTextField.delegate = self
+        self.nameTextView.delegate = self
     }
     
    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
        }
     
     @IBAction func didPressSubmit(_ sender: Any) {
-        guard let name = nameTextView.text else { return}
+        guard let name = nameTextView.text else { return }
         Globals.name = name.capitalized
     }
 }
