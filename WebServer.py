@@ -40,7 +40,7 @@ def post_data(user, friend, key_words, emotion, photo):
 
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
-    if request.method == 'POST':    # new conversation
+    if request.method:# == 'POST':    # new conversation
         print("before")
         data = request.form
         print("TYPE OF DATA: ", type(data))

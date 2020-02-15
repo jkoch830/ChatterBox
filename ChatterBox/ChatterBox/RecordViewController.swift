@@ -132,7 +132,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     
     func didFinishTakingPic() {
         guard let image = picture else { return }
-        let imgData = image.pngData()!
+        let imgData = image.jpegData(compressionQuality: 1)!
         
         let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
         
@@ -148,7 +148,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
                 }
                 print(imgData)
                 multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
-        }, to: uploadURL, method: .post, headers: headers) { (result) in
+        }, to: uploadURL, headers: headers) { (result) in
                     switch result {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in
