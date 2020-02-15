@@ -23,6 +23,13 @@ config = {
 
 p_firebase = pyrebase.initialize_app(config)
 
+app = Flask(__name__)
+
+DATABASE_URL = "https://chatterbox-83fc3.firebaseio.com/"
+ENTRY_URL = "chatterbox-83fc3/Users/"
+STORAGE_URL = "chatterbox-83fc3.appspot.com/"
+firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
+
 def post_data(user, friend, key_words, emotion, photo):
     storage = p_firebase.storage()
     storage.child("friends/example.jpg").put(photo)
