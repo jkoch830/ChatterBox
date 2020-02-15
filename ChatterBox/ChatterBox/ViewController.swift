@@ -23,10 +23,17 @@ class ViewController: UIViewController {
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
+ 
+    self.myTextField.delegate = self
     }
     
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+              self.view.endEditing(true)
+              return false
+       }
+    
     @IBAction func didPressSubmit(_ sender: Any) {
-        guard let name = nameTextView.text else { return }
+        guard let name = nameTextView.text else { return}
         Globals.name = name.capitalized
     }
 }
