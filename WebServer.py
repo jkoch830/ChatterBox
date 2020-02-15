@@ -5,6 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
+from gcloud import storage
 
 
 import SpeechParse
@@ -21,7 +22,7 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
 def upload_photo():
-    sto = firebase_ser.storage()
+    sto = gcloud.storage()
     sto.child("images/apple.jpg").put("download.jpg")
 
 
@@ -52,8 +53,6 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
-        print(photo.encoding)
-        return jsonify(bytes(photo.encoding, 'utf-8'))
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data

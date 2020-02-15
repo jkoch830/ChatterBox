@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81101cce-a399-4479-b247-21820840e97b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebServer.py" afterDir="false" />
     </list>
@@ -35,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="42" column="59" lean-forward="true" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+            <state relative-caret-position="273">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="e#0#87#0" expanded="true" />
               </folding>
@@ -100,7 +99,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="744" />
+    <option name="x" value="19" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="837" />
@@ -263,7 +262,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="744" y="23" width="1400" height="837" extended-state="0" />
+    <frame x="19" y="23" width="1400" height="837" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -371,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="42" column="59" lean-forward="true" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+        <state relative-caret-position="273">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="e#0#87#0" expanded="true" />
           </folding>
