@@ -26,7 +26,7 @@ def upload_photo(photo):
     # sto = firebase.storage()
     # sto.child("images/apple.jpg").put("download.jpg")
     temp = tempfile.NamedTemporaryFile(delete=False)
-    picture.save(temp.name)
+    photo.save(temp.name)
     firebase.storage().put(temp.name)
     os.remove(temp.name)
 
