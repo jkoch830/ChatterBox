@@ -26,6 +26,7 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
         self.refreshControl.addTarget(self, action: #selector(refreshDataBase), for: .valueChanged)
         
         self.tableView.reloadData()
+        self.refreshDataBase(self)
     }
     
     @objc
