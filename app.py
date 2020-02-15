@@ -77,6 +77,7 @@ def enter_new_conversation():
 def retrieve_data():
     data = {"failed": False}
     print("RETRIEVING...")
+    print("request.method: ", request.method)
     if request.method == 'POST':            # retrieve_data
         info = request.get_json()
         user = info['user']
@@ -86,6 +87,7 @@ def retrieve_data():
             data = SearchDatabase.search_database(user)
             print("DATA", data)
             friends = data.keys()
+            print("FRIENDS: ", friends)
             for friend in friends:
                 name = user + "_" + friend + ".jpg"
                 url = storage.child(name).get_url("")
