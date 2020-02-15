@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 app[SQLALCHEMY_DATABASE_URI] = os.environ["DATABASE_URL"]
@@ -57,6 +58,7 @@ class Friend(db.Model):
 def enter_new_conversation():
     if request.method == 'POST':    # new conversation
         data = request.form
+
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
@@ -64,6 +66,7 @@ def enter_new_conversation():
         photo_bytes = io.BytesIO(photo.read())
         keywords = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
+
         if Friend.query.filter_by(name=user).scalar():
             friend = Friend.query.filter_by(name=user)
             friend.update(name=user, emotion=emotion, keywords=keywords, image=photo.read())
