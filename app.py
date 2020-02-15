@@ -34,7 +34,7 @@ def post_data(user, friend, key_words, emotion, photo):
     temp = tempfile.NamedTemporaryFile(delete=False)
     photo.save(temp.name)
     storage = p_firebase.storage()
-    storage.child("friends/example.jpg").put(temp.name)
+    storage.child("example.jpg").put(temp.name)
     os.remove(temp.name)
 
     data = {'Key Words': key_words, 'Emotion': emotion}
