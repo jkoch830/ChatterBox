@@ -10,6 +10,7 @@ import UIKit
 
 class Globals: NSObject {
     static var name: String = ""
+    static var friends: [String] = []
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {

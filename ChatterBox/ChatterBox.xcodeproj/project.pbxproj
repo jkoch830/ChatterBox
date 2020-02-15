@@ -17,6 +17,7 @@
 		2BE2079C23F7D2E80094EDD6 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2079B23F7D2E80094EDD6 /* DataBaseTableViewCell.swift */; };
 		2BE207A223F80AFE0094EDD6 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE207A123F80AFE0094EDD6 /* DataBaseViewController.swift */; };
 		2BE207A423F8217A0094EDD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE207A323F8217A0094EDD6 /* ViewController.swift */; };
+		2BE207A823F878B00094EDD6 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE207A723F878B00094EDD6 /* Friends.swift */; };
 		5E0F5E15A304511773714BBC /* Pods_ChatterBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		2BE2079B23F7D2E80094EDD6 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
 		2BE207A123F80AFE0094EDD6 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
 		2BE207A323F8217A0094EDD6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BE207A723F878B00094EDD6 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		6B46AEBAA583B0209E5E4AEE /* Pods_ChatterBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatterBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7209D5B0051A72C3989CD1EF /* Pods-ChatterBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.debug.xcconfig"; path = "Target Support Files/Pods-ChatterBox/Pods-ChatterBox.debug.xcconfig"; sourceTree = "<group>"; };
 		D4E7C74EDD45630C7E01DB9E /* Pods-ChatterBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.release.xcconfig"; path = "Target Support Files/Pods-ChatterBox/Pods-ChatterBox.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				2B58300D23F79A1400C375AD /* AppDelegate.swift */,
 				2B58300F23F79A1400C375AD /* SceneDelegate.swift */,
 				2BE207A323F8217A0094EDD6 /* ViewController.swift */,
+				2BE207A723F878B00094EDD6 /* Friends.swift */,
 				2B58301123F79A1400C375AD /* ScrollViewController.swift */,
 				2BD23CDC23F7AC4B000C4EFA /* RecordViewController.swift */,
 				2BE207A123F80AFE0094EDD6 /* DataBaseViewController.swift */,
@@ -221,6 +224,7 @@
 				2B58301223F79A1400C375AD /* ScrollViewController.swift in Sources */,
 				2BE2079C23F7D2E80094EDD6 /* DataBaseTableViewCell.swift in Sources */,
 				2BE207A423F8217A0094EDD6 /* ViewController.swift in Sources */,
+				2BE207A823F878B00094EDD6 /* Friends.swift in Sources */,
 				2B58300E23F79A1400C375AD /* AppDelegate.swift in Sources */,
 				2BE207A223F80AFE0094EDD6 /* DataBaseViewController.swift in Sources */,
 				2BD23CDD23F7AC4B000C4EFA /* RecordViewController.swift in Sources */,
