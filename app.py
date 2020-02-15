@@ -27,27 +27,27 @@ ENTRY_URL = "chatterbox-83fc3/Users/"
 STORAGE_URL = "chatterbox-83fc3.appspot.com/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
+
 def post_data(user, friend, key_words, emotion, photo):
+    # always updates friend's photo
     temp = tempfile.NamedTemporaryFile(delete=False)
     photo.save(temp.name)
     storage = p_firebase.storage()
-<<<<<<< HEAD
     name = user + "_" + friend
     storage.child(name + ".jpg").put(temp.name)
-=======
-    storage.child(user + "_" + friend + ".jpg").put(temp.name)
->>>>>>> 5f7d155bbe08e5a5439fb3b046c975bcaed3b599
     os.remove(temp.name)
-
     data = {'Key Words': key_words, 'Emotion': emotion}
+
     if not SearchDatabase.user_in_database(user):   # user not in database
         print("BEFORE POST")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
         print("AFTER POST")
+
     elif SearchDatabase.current_friend_of_user(user, friend):
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes
         UpdateDatabase.update(user, friend, edited, emotion)
+
     else:       # user is in database but friend is not
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
 
@@ -66,8 +66,6 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
-        # print(photo)
-        # b = io.BytesIO(photo.read())
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data
@@ -77,19 +75,19 @@ def enter_new_conversation():
 
 @app.route("/retrieve", methods=['POST'])
 def retrieve_data():
-    storage = p_firebase.storage()
-    print(storage.child("example.jpg").get_url(""))
     data = {"failed": False}
     if request.method == 'POST':            # retrieve_data
         info = request.form
         user = info['user']
-        friend = info['friend']
         if SearchDatabase.user_in_database(user):
+            storage = p_firebase.storage()
             data = SearchDatabase.search_database(user)
-
+            print("DATA", data)
+            friends = data.keys()
+            for friend in friends:
+                name = user + "_" + friend + ".jpg"
+                url = storage.child(name).get_url("")
+                data[friend]['url'] = url
     return jsonify(data)
 
-
-#res = SearchDatabase.search_database('Edward')
-#print(res)
 
