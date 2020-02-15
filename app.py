@@ -89,7 +89,7 @@ def retrieve_data():
             friends = data.keys()
             print("DATA", data)
             friends = data.keys()
-            list.sort(friends)
+            #list.sort(friends)
             print("FRIENDS: ", friends)
             for friend in friends:
                 name = user + "_" + friend + ".jpg"
