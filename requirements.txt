@@ -10,3 +10,4 @@ sseclient
 Crypto
 pycryptodome
 requests_toolbelt
+pyrebase
