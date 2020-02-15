@@ -29,7 +29,7 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @objc
     func refreshDataBase(_ sender: Any) {
-        let url = "https://chatterboxweb.herokuapp.com/"
+        let url = "https://chatterboxweb.herokuapp.com/retrieve"
         let params = ["user" : "Edward"]
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {

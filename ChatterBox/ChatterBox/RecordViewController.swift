@@ -16,9 +16,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
 
     @IBOutlet var soundBars: [UIView]!
     @IBOutlet weak var recordButton: UIButton!
-    
-    var isRecording = false
-        
+            
     let fileName = "record.m4a"
         
     var filemanager = FileManager.default
@@ -108,10 +106,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     func transcribeAudio(url: URL) {
         let recognizer = SFSpeechRecognizer()
         let request = SFSpeechURLRecognitionRequest(url: url)
-
+        
         recognizer?.recognitionTask(with: request) { (result, error) in
             guard let result = result else {
                 print("UH OH: \(error!)")
+                self.dismiss(animated: false, completion: nil)
                 return
             }
 
@@ -127,36 +126,47 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             picture = image
             imagePicker.dismiss(animated: true, completion: didFinishTakingPic)
+            self.dismiss(animated: false, completion: nil)
         }
     }
     
     func didFinishTakingPic() {
         guard let image = picture else { return }
-        let imgData = image.jpegData(compressionQuality: 1.0)!
+        
+        let alert = UIAlertController(title: nil, message: "Hang on just a bit...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating()
+
+        alert.view.addSubview(loadingIndicator)
+        self.present(alert, animated: true, completion: nil)
+        
+        let imgData = image.jpegData(compressionQuality: 0.5)!
         
         let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
         
         let parameters = ["user": "Edward", "friend": "James", "conversation": self.speech]
-//        let headers: HTTPHeaders = [
-//            "Content-type": "multipart/form-data",
-//            "Accept": "application/json"
-//        ]
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in parameters {
                     multipartFormData.append(value.data(using: .utf8)!, withName: key)
                 }
-                print(imgData)
-                multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpg", mimeType: "image/jpg")
+                multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
         }, to: uploadURL) { (result) in
                     switch result {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in
-                            print(response)
                             switch response.result {
                             case .success(let value):
                                 let json = JSON(value)
                                 print("JSON: \(json)")
+                                self.dismiss(animated: false, completion: nil)
+                                let alert = UIAlertController(title: "Information Saved!", message: nil, preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
+                                self.present(alert, animated: true)
                             case .failure(let error):
                                 print(error)
                             }
@@ -186,6 +196,5 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
             finishRecording()
             transcribeAudio(url: getFileURL())
         }
-        isRecording = !isRecording
     }
 }
