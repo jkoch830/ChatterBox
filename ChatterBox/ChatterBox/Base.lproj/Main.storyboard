@@ -156,11 +156,11 @@
                                     <action selector="pressedRecord:" destination="8t7-VT-RCg" eventType="touchUpInside" id="dcF-fq-AzA"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back2" translatesAutoresizingMaskIntoConstraints="NO" id="QjG-bk-TrV">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="111"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="back2" translatesAutoresizingMaskIntoConstraints="NO" id="QjG-bk-TrV">
+                                <rect key="frame" x="-93" y="-51" width="293" height="162"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back2" translatesAutoresizingMaskIntoConstraints="NO" id="nOq-uT-LZX">
-                                <rect key="frame" x="175" y="0.0" width="200" height="111"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="back2" translatesAutoresizingMaskIntoConstraints="NO" id="nOq-uT-LZX">
+                                <rect key="frame" x="175" y="-43" width="287" height="154"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatterbox1" translatesAutoresizingMaskIntoConstraints="NO" id="YQj-TJ-Hn4">
                                 <rect key="frame" x="125" y="20" width="125" height="75"/>
