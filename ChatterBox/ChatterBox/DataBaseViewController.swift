@@ -71,12 +71,12 @@ class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITa
 //                    print("url", url)
 //                    print("emotion", emotions_dict)
                 }
-                Globals.friends = friends
+                Globals.friends = friends.sorted(by: { $0.name > $1.name })
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
-        self.tableView.reloadData()
         self.refreshControl.endRefreshing()
     }
 
