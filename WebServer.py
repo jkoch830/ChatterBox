@@ -19,8 +19,8 @@ ENTRY_URL = "chatterbox-83fc3/Users/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
-def post_data(user, friend, key_words, emotion):
-    data = {'Key Words': key_words, 'Emotion': emotion}
+def post_data(user, friend, key_words, emotion, photo):
+    data = {'Key Words': key_words, 'Emotion': emotion, 'Photo': photo}
     if not SearchDatabase.user_in_database(user):   # user not in database
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
     elif SearchDatabase.current_friend_of_user(user, friend):
@@ -30,7 +30,6 @@ def post_data(user, friend, key_words, emotion):
         UpdateDatabase.update(user, friend, edited, emotion)
     else:       # user is in database but friend is not
         print("else")
-        data = {'Key Words' : key_words, 'Emotion' : emotion}
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
 
 
@@ -41,13 +40,14 @@ def post_data(user, friend, key_words, emotion):
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
     if request.method == 'POST':    # new conversation
-        data = request.get_json()
+        data = request.form
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
+        photo = data['profilePhoto']
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
-        post_data(user, friend, key_words, emotion)   # posts data
+        post_data(user, friend, key_words, emotion, photo)   # posts data
 
 
 @app.route("/retrieve", methods=['POST'])
