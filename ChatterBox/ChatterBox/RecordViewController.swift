@@ -26,6 +26,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     var imagePicker =  UIImagePickerController()
     
     var picture: UIImage!
+    var speech = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +117,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
 
             if result.isFinal {
                 self.present(self.imagePicker, animated: true, completion: nil)
-                print(result.bestTranscription.formattedString)
+                self.speech = result.bestTranscription.formattedString
+                print(self.speech)
             }
         }
     }
@@ -134,7 +136,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
         
         let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
         
-        let parameters = ["user": "Edward", "friend": "James", "conversation": "hello world"]
+        let parameters = ["user": "Edward", "friend": "James", "conversation": self.speech]
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in parameters {
@@ -146,7 +148,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
                     switch result {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in
-                            print(response.result.value)
+                            switch response.result {
+                            case .success(let value):
+                                let json = JSON(value)
+                                print("JSON: \(json)")
+                            case .failure(let error):
+                                print(error)
+                            }
                         }
                     case .failure(let encodingError):
                         print(encodingError)

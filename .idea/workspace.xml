@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81101cce-a399-4479-b247-21820840e97b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SearchDatabase.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchDatabase.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebServer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-40">
-              <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state relative-caret-position="201">
+              <caret line="47" column="59" lean-forward="true" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="59" />
               <folding>
                 <element signature="e#0#87#0" expanded="true" />
               </folding>
@@ -112,7 +110,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="431" />
+    <option name="x" value="146" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="837" />
@@ -275,19 +273,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="431" y="23" width="1400" height="837" extended-state="0" />
+    <frame x="146" y="23" width="1400" height="837" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24945612" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49891225" weight="0.32885906" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49891225" visible="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50181293" side_tool="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32885906" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32885906" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4981871" visible="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4981871" weight="0.32885906" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -369,8 +367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+        <state relative-caret-position="201">
+          <caret line="47" column="59" lean-forward="true" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="59" />
           <folding>
             <element signature="e#0#87#0" expanded="true" />
           </folding>
