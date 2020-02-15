@@ -3,3 +3,9 @@ gunicorn
 firebase-admin
 firebase
 retinasdk
+paralleldots
+python_jwt
+gcloud
+sseclient
+crypto
+requests_toolbelt
