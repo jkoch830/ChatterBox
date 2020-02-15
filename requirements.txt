@@ -1,11 +1,2 @@
 Flask
-Flask-SQLAlchemy
 gunicorn
-requests
-bs4
-pytz
-psycopg2
-cmake
-face_recognition
-upsidedown
-zalgoify
