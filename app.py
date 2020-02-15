@@ -62,16 +62,16 @@ def enter_new_conversation():
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
         photo_bytes = io.BytesIO(photo.read())
-        key_words = SpeechParse.get_key_words(conversation)
+        keywords = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
-        if FileContents.query.filter_by(name=file.filename).scalar():
-            Friend = FileContents.query.filter_by(name=file.filename)
-            Friend.update(name=file.filename.strip(), data=file.read())
+        if Friend.query.filter_by(name=user).scalar():
+            friend = Friend.query.filter_by(name=user)
+            friend.update(name=user, emotion=emotion, keywords=keywords, image=photo.read())
             db.session.add(Friend)
             db.session.commit()
         else:
-            NewFriend = Friend(name=file.filename.strip(), data=file.read())
-            db.session.add(NewFriend)
+            newFriend = Friend(name=user, emotion=emotion, keywords=keywords, image=photo.read())
+            db.session.add(newFriend)
             db.session.commit()
     data = {"success": True}
     return jsonify(data)
