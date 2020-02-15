@@ -20,7 +20,8 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
 def post_data(user, friend, key_words, emotion, photo):
-    data = {'Key Words': key_words, 'Emotion': emotion, 'Photo': photo}
+    print("PHOTO", photo)
+    data = {'Key Words': key_words, 'Emotion': emotion}
     print(data)
     if not SearchDatabase.user_in_database(user):   # user not in database
         print("BEFORE POST")
