@@ -22,12 +22,15 @@ firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 def post_data(user, friend, key_words, emotion, photo):
     data = {'Key Words': key_words, 'Emotion': emotion, 'Photo': photo}
     if not SearchDatabase.user_in_database(user):   # user not in database
+        print("NOT GREAT")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
     elif SearchDatabase.current_friend_of_user(user, friend):
+        print("NOT GOOD")
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes
         UpdateDatabase.update(user, friend, edited, emotion)
     else:       # user is in database but friend is not
+        print("POSTING DATA")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
 
 
@@ -46,6 +49,7 @@ def enter_new_conversation():
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data
+    print("SUCCESS")
     data = {"success": True}
     return jsonify(data)
 
