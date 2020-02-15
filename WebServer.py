@@ -40,7 +40,7 @@ def post_data(user, friend, key_words, emotion, photo):
 
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
-    if request.method:# == 'POST':    # new conversation
+    if request.method == 'POST':    # new conversation
         print("before")
         data = request.form
         print("TYPE OF DATA: ", type(data))
@@ -49,7 +49,7 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         print("before photo")
-        photo = data['profilePhoto']
+        photo = request.files.get("profilePicture")
         print("after photo")
         print(user, friend, conversation, photo)
         key_words = SpeechParse.get_key_words(conversation)
