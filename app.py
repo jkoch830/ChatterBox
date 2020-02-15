@@ -87,7 +87,7 @@ def retrieve_data():
             storage = p_firebase.storage()
             data = SearchDatabase.search_database(user)
             print("DATA", data)
-            friends = data.keys().sort()
+            friends = data.keys()
             print("FRIENDS: ", friends)
             for friend in friends:
                 name = user + "_" + friend + ".jpg"
