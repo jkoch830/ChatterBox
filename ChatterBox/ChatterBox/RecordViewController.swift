@@ -132,9 +132,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
         guard let image = picture else { return }
         let imgData = image.jpegData(compressionQuality: 1)!
         
-        let uploadURL = "https://chatterboxweb.herokuapp.com/"
+        let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
         
-        let parameters = ["user": "Edward"]
+        let parameters = ["user": "Edward", "friend": "James", "conversation": "hello world"]
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in parameters {
@@ -142,7 +142,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
                 }
                 multipartFormData.append(imgData, withName: "profilePhoto", fileName: "profilePhoto.jpeg", mimeType: "image/jpeg")
 
-                }, to: uploadURL) { (result) in
+                }, to: uploadURL, method: .post) { (result) in
                     switch result {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in

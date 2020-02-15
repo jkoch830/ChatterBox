@@ -41,7 +41,7 @@ def post_data(user, friend, key_words, emotion):
 @app.route("/enter", methods=['POST'])
 def enter_new_conversation():
     if request.method == 'POST':    # new conversation
-        data = request.get_json()
+        data = request.form
         user = data['user']
         friend = data['friend']
         conversation = data['conversation']
