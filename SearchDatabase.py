@@ -10,7 +10,6 @@ def search_database(user):
     print(result)
 
 
-
 # returns true if user already has friend in database
 def current_friend_of_user(user, friend):
     user_dict = firebase_database.get('chatterbox-83fc3/Users/', '')
@@ -20,7 +19,6 @@ def current_friend_of_user(user, friend):
         return True
     else:
         return False
-
 
 
 # returns the list of key words of friend in user's friends
