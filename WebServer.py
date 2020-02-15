@@ -55,7 +55,7 @@ def enter_new_conversation():
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
         print(photo)
-        b = io.BytesIO(photo)
+        b = io.BytesIO(photo.content)
         return jsonify(b)
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
