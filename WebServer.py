@@ -5,24 +5,29 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase import firebase
+
+
 import SpeechParse
 import EmotionScanner
 import SearchDatabase
 import UpdateDatabase
 
-# <FileStorage: 'profilePicture.jpeg' ('image/jpeg')>
-# https://chatterboxweb.herokuapp.com/
 app = Flask(__name__)
 
 DATABASE_URL = "https://chatterbox-83fc3.firebaseio.com/"
 ENTRY_URL = "chatterbox-83fc3/Users/"
+STORAGE_URL = "chatterbox-83fc3.appspot.com/"
 firebase_database = firebase.FirebaseApplication(DATABASE_URL, None)
 
 
+def upload_photo():
+    sto = firebase_ser.storage()
+    sto.child("images/apple.jpg").put("download.jpg")
+
+
 def post_data(user, friend, key_words, emotion, photo):
-    print("PHOTO", photo)
+   # upload_photo(photo)
     data = {'Key Words': key_words, 'Emotion': emotion}
-    print(data)
     if not SearchDatabase.user_in_database(user):   # user not in database
         print("BEFORE POST")
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
@@ -30,7 +35,7 @@ def post_data(user, friend, key_words, emotion, photo):
     elif SearchDatabase.current_friend_of_user(user, friend):
         current_key_words = SearchDatabase.get_key_words(user, friend)
         edited = list(set(current_key_words + key_words))  # removes
-        UpdateDatabase.update(user, friend, edited, emotion, photo)
+        UpdateDatabase.update(user, friend, edited, emotion)
     else:       # user is in database but friend is not
         firebase_database.post(ENTRY_URL + user + '/' + friend + '/', data)
 
@@ -47,7 +52,8 @@ def enter_new_conversation():
         friend = data['friend']
         conversation = data['conversation']
         photo = request.files.get("profilePicture")
-        print("RECEIVED PHOTO")
+        print(photo.encoding)
+        return jsonify(bytes(photo.encoding, 'utf-8'))
         key_words = SpeechParse.get_key_words(conversation)
         emotion = EmotionScanner.get_emotion(conversation)
         post_data(user, friend, key_words, emotion, photo)   # posts data
