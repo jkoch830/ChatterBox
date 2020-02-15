@@ -132,7 +132,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigat
     
     func didFinishTakingPic() {
         guard let image = picture else { return }
-        let imgData = image.jpegData(compressionQuality: 0.05)!
+        let imgData = image.jpegData(compressionQuality: 0.1)!
         
         let uploadURL = "https://chatterboxweb.herokuapp.com/enter"
         
