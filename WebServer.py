@@ -70,5 +70,7 @@ def retrieve_data():
             data = SearchDatabase.search_database(user)
     return jsonify(data)
 
+
+
 #res = SearchDatabase.search_database('Edward')
 #print(res)
