@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Speech
 
-class RecordViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordViewController: UIViewController, AVAudioRecorderDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var soundBars: [UIView]!
     @IBOutlet weak var recordButton: UIButton!
@@ -21,6 +21,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
     var filemanager = FileManager.default
     var audioRecorder = AVAudioRecorder()
+    var imagePicker =  UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         } catch {
             print("failed to make audioRecorder")
         }
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
     }
     
     func startRecording() {
@@ -105,9 +110,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             }
 
             if result.isFinal {
+                self.present(self.imagePicker, animated: true, completion: nil)
                 print(result.bestTranscription.formattedString)
             }
         }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        let image = info[.originalImage] as? UIImage
     }
 
     @IBAction func pressedRecord(_ sender: Any) {

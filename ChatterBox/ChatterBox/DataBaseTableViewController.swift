@@ -8,16 +8,22 @@
 import UIKit
 import Alamofire
 
-class DataBaseTableViewController: UITableViewController {
+class DataBaseTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    let refreshControl = UIRefreshControl()
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.refreshControl = UIRefreshControl()
-        refreshControl!.attributedTitle = NSAttributedString(string: "Refreshing...")
-        refreshControl!.addTarget(self, action: #selector(refreshDataBase), for: .valueChanged)
-
-        self.clearsSelectionOnViewWillAppear = false
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        self.tableView.addSubview(self.refreshControl)
+        self.tableView.reloadData()
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+        self.refreshControl.addTarget(self, action: #selector(refreshDataBase), for: .valueChanged)
     }
     
     @objc func refreshDataBase(_ sender: Any) {
@@ -25,37 +31,28 @@ class DataBaseTableViewController: UITableViewController {
         Alamofire.request(url, method: .get).responseJSON { response in
             if let json = response.result.value {
                 print(json)
-                self.refreshControl!.endRefreshing()
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dbcell", for: indexPath)
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "tvcell", for: indexPath) as? DataBaseTableViewCell else {
+            fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
+        }
         return cell
     }
 
